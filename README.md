@@ -2,6 +2,16 @@
 
  _[Erick Oduniyi](https://eoduniyi.github.io/erick.light/) & [Myunghyun Oh](https://mathematics.ku.edu/myunghyun-oh)_
 
+## [Visualizing Math, Music, and Electromagnetism](project2.md)
+
+<div style="text-align: justify">
+
+</div>
+
+---
+
+ _[Erick Oduniyi](https://eoduniyi.github.io/erick.light/) & [Myunghyun Oh](https://mathematics.ku.edu/myunghyun-oh)_
+
 ## [On Listening and Duets](project1.md): _Hearing Performance, Chaotic Dynamics, and Computational Auditory Scenery Analysis_
 
 <div style="text-align: justify">
