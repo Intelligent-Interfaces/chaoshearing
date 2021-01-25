@@ -17,7 +17,3 @@
 <div style="text-align: justify">
 This first project ("On Listening and Duets") and the entire Chaos Hearing project have been started because of a deep appreciation for mathematics, music, and sound. The Chaos Hearing project's goal is to facilitate the conversations between these entities (sound, music, and math). These conversations are between student and teacher, artist and artist, mathematician and mathematician, and artist and mathematician. During the conversations, expect discussions on related research, theories, art, design, and everything else from a formal and wonderfully artistic perspective.
 </div>
-
----
-Contact Us
-#####  <i>Erick Oduniyi ([eeoduniyi@gmail](eeoduniyi@gmail.com))</i>
