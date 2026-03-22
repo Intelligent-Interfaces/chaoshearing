@@ -1,6 +1,13 @@
+---
+layout: default
+title: "01 — On Listening and Duets"
+---
+
 # 01 — On Listening and Duets
 
 _Hearing Performance, Chaotic Dynamics, and Computational Auditory Scene Analysis_
+
+[← Home]({{ site.baseurl }}/)
 
 **Erick Oduniyi** — originally with [Myunghyun Oh](https://mathematics.ku.edu/myunghyun-oh)
 

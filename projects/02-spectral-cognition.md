@@ -1,6 +1,13 @@
+---
+layout: default
+title: "02 — Spectral Cognition"
+---
+
 # 02 — Spectral Cognition
 
 _Sound Physics, Musical Imagery, and the Perception of Pitch_
+
+[← Home]({{ site.baseurl }}/)
 
 **Erick Oduniyi**
 

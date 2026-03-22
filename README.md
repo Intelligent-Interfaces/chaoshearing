@@ -19,29 +19,27 @@ The project grew out of a thesis on _Intuitive Audio Interaction and Control in 
 ```
 chaoshearing/
 ├── README.md
-├── sources/                  # Research papers (PDFs) and annotated bibliography
-│   ├── BIBLIOGRAPHY.md       # Annotated guide to collected papers
-│   └── *.pdf                 # Source papers
+├── index.md                  # GitHub Pages homepage
+├── sources/                  # Research papers and annotated bibliography
+│   ├── BIBLIOGRAPHY.md
+│   └── *.pdf
 ├── projects/
-│   ├── 01-listening-and-duets.md    # Chaotic dynamics & auditory scene analysis
-│   └── 02-spectral-cognition.md     # Sound physics, musical imagery & perception
+│   ├── 01-listening-and-duets.md
+│   └── 02-spectral-cognition.md
 ├── notebooks/
-│   └── nonstationary_audio.py       # GP-based nonstationary audio analysis demo
-├── docs/                     # GitHub Pages site
-│   ├── index.md
-│   └── projects/
+│   └── nonstationary_audio.py
 └── _config.yml
 ```
 
 ## Projects
 
-### [01 — On Listening and Duets](projects/01-listening-and-duets.md)
+### [01 — On Listening and Duets](https://intelligent-interfaces.github.io/chaoshearing/projects/01-listening-and-duets)
 
 _Hearing Performance, Chaotic Dynamics, and Computational Auditory Scene Analysis_
 
 The original thread: modeling the cochlea and auditory perception through the lens of nonlinear dynamics (Hopf bifurcations, limit cycles) and connecting that to how we parse complex sound scenes — duets, ensembles, overlapping conversations.
 
-### [02 — Spectral Cognition](projects/02-spectral-cognition.md)
+### [02 — Spectral Cognition](https://intelligent-interfaces.github.io/chaoshearing/projects/02-spectral-cognition)
 
 _Sound Physics, Musical Imagery, and the Perception of Pitch_
 

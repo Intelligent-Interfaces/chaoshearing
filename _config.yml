@@ -1,1 +1,16 @@
 theme: jekyll-theme-slate
+title: Chaos Hearing
+description: At the intersection of sound physics, auditory cognition, and interface design.
+baseurl: /chaoshearing
+url: https://intelligent-interfaces.github.io
+
+# Serve from repo root (not /docs)
+include:
+  - projects
+  - sources
+
+exclude:
+  - notebooks
+  - requirements.txt
+  - "*.pdf"
+  - LICENSE

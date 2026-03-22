@@ -1,3 +1,8 @@
+---
+layout: default
+title: Chaos Hearing
+---
+
 # Chaos Hearing
 
 _[Erick Oduniyi](https://eoduniyi.github.io/erick.light/)_
@@ -10,13 +15,13 @@ Chaos Hearing explores how we hear, how sound behaves, and how we might build be
 
 ## Projects
 
-### [01 — On Listening and Duets](projects/01-listening-and-duets.md)
+### [01 — On Listening and Duets]({{ site.baseurl }}/projects/01-listening-and-duets)
 
 _Hearing Performance, Chaotic Dynamics, and Computational Auditory Scene Analysis_
 
 Modeling the cochlea through nonlinear dynamics and connecting that to how we parse complex sound scenes.
 
-### [02 — Spectral Cognition](projects/02-spectral-cognition.md)
+### [02 — Spectral Cognition]({{ site.baseurl }}/projects/02-spectral-cognition)
 
 _Sound Physics, Musical Imagery, and the Perception of Pitch_
 
