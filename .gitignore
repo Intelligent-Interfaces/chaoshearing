@@ -12,6 +12,9 @@ venv/
 *.ipynb_checkpoints/
 notebooks/*.png
 
+# PDFs (tracked in sources/ but too large for git)
+*.pdf
+
 # IDE
 .vscode/
 .idea/
