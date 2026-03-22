@@ -1,0 +1,17 @@
+# Python
+__pycache__/
+*.pyc
+*.egg-info/
+.venv/
+venv/
+
+# macOS
+.DS_Store
+
+# Notebooks
+*.ipynb_checkpoints/
+notebooks/*.png
+
+# IDE
+.vscode/
+.idea/
