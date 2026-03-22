@@ -1,15 +1,27 @@
 # Chaos Hearing
 
- _[Erick Oduniyi](https://eoduniyi.github.io/erick.light/) & [Myunghyun Oh](https://mathematics.ku.edu/myunghyun-oh)_
+_[Erick Oduniyi](https://eoduniyi.github.io/erick.light/)_
 
-## [On Listening and Duets](projects/project1.md): _Hearing Performance, Chaotic Dynamics, and Computational Auditory Scenery Analysis_
-
-<div style="text-align: justify">
-This first project ("On Listening and Duets") and the entire Chaos Hearing project have been started because of a deep appreciation of mathematics, music, and sound. The Chaos Hearing project's goal is to facilitate the conversations between these entities (sound, music, and math. These conversations are between student and teacher, artist and artist, mathematician and mathematician, and artist and mathematician. During the conversations, expect discussions on related research, theories, art, design, and everything else from a formal and wonderfully artistic perspective.
-</div>
+> At the intersection of sound physics, auditory cognition, and interface design.
 
 ---
-Contact Us
 
-#####  <i>Erick Oduniyi ([eeoduniyi@gmail](eeoduniyi@gmail.com))</i>      
+Chaos Hearing explores how we hear, how sound behaves, and how we might build better tools for interacting with complex auditory environments.
 
+## Projects
+
+### [01 — On Listening and Duets](projects/01-listening-and-duets.md)
+
+_Hearing Performance, Chaotic Dynamics, and Computational Auditory Scene Analysis_
+
+Modeling the cochlea through nonlinear dynamics and connecting that to how we parse complex sound scenes.
+
+### [02 — Spectral Cognition](projects/02-spectral-cognition.md)
+
+_Sound Physics, Musical Imagery, and the Perception of Pitch_
+
+Bridging the physics of sound with cognitive phenomena — perfect pitch, involuntary musical imagery, auditory hallucinations.
+
+---
+
+Contact: [Erick Oduniyi](mailto:eeoduniyi@gmail.com)
