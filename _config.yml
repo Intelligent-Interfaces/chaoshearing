@@ -10,7 +10,6 @@ include:
   - sources
 
 exclude:
-  - notebooks
   - requirements.txt
   - "*.pdf"
   - LICENSE

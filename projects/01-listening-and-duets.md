@@ -75,7 +75,7 @@ The connection to chaotic dynamics: when multiple nonlinear oscillators (cochlea
 
 Spectral mixture Gaussian process regression on a synthetic duet — a chirp (200→600 Hz) mixed with an amplitude-modulated 440 Hz tone. The GP captures the signal's frequency content probabilistically, with uncertainty, rather than through a fixed-resolution spectrogram.
 
-![Nonstationary Audio Analysis](../notebooks/nonstationary_audio_demo.png)
+![Nonstationary Audio Analysis]({{ site.baseurl }}/notebooks/nonstationary_audio_demo.png)
 
 _Top: mixture signal and ground truth sources. Middle: STFT spectrogram vs. spectral mixture kernel density. Bottom: GP posterior mean and uncertainty on a 50ms window._
 
@@ -85,7 +85,7 @@ _Top: mixture signal and ground truth sources. Middle: STFT spectrogram vs. spec
 
 Implementation of Algorithm 1 from [Wilkinson et al. (2019)](https://arxiv.org/abs/1901.11436) — Expectation Propagation inference in a state-space GP model via Kalman filtering (forward pass) and RTS smoothing (backward pass).
 
-![EP Kalman Smoothing](../notebooks/ep_kalman_viz.png)
+![EP Kalman Smoothing]({{ site.baseurl }}/notebooks/ep_kalman_viz.png)
 
 _Top: observations, true latent signal, and final EP posterior (filter in blue, smoother in orange). Middle: variance evolution across EP iterations and convergence. Bottom: cavity parameters τ⁻ and ν⁻ stabilising, plus algorithm flow diagram._
 
