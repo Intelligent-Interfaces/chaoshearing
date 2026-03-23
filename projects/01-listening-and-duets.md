@@ -68,3 +68,25 @@ The connection to chaotic dynamics: when multiple nonlinear oscillators (cochlea
 - Hopf bifurcation models of the cochlea (Eguíluz et al., 2000; Kern & Stoop, 2003)
 - Bregman, A.S. (1990). _Auditory Scene Analysis_
 - [Object-based sound synthesis with physical constraints](../sources/BIBLIOGRAPHY.md#object-based-synthesis-of-scraping-and-rolling-sounds-based-on-non-linear-physical-constraints) — `2112.08984v1.pdf`
+
+## Demos
+
+### Nonstationary Audio Analysis
+
+Spectral mixture Gaussian process regression on a synthetic duet — a chirp (200→600 Hz) mixed with an amplitude-modulated 440 Hz tone. The GP captures the signal's frequency content probabilistically, with uncertainty, rather than through a fixed-resolution spectrogram.
+
+![Nonstationary Audio Analysis](../notebooks/nonstationary_audio_demo.png)
+
+_Top: mixture signal and ground truth sources. Middle: STFT spectrogram vs. spectral mixture kernel density. Bottom: GP posterior mean and uncertainty on a 50ms window._
+
+---
+
+### EP via Kalman Smoothing (Algorithm 1)
+
+Implementation of Algorithm 1 from [Wilkinson et al. (2019)](https://arxiv.org/abs/1901.11436) — Expectation Propagation inference in a state-space GP model via Kalman filtering (forward pass) and RTS smoothing (backward pass).
+
+![EP Kalman Smoothing](../notebooks/ep_kalman_viz.png)
+
+_Top: observations, true latent signal, and final EP posterior (filter in blue, smoother in orange). Middle: variance evolution across EP iterations and convergence. Bottom: cavity parameters τ⁻ and ν⁻ stabilising, plus algorithm flow diagram._
+
+The smoother consistently outperforms the filter (RMSE ~0.16 vs ~0.21) because it incorporates future observations — the backward pass propagates information from the end of the signal back to the beginning.

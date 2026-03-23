@@ -23,6 +23,8 @@ Erick Oduniyi — Chaos Hearing Project
 """
 
 import numpy as np
+import matplotlib
+matplotlib.use("Agg")  # non-interactive backend — saves PNG without opening a window
 import matplotlib.pyplot as plt
 from scipy.signal import stft, istft
 from scipy.linalg import cho_solve, cho_factor
@@ -273,7 +275,6 @@ def main():
     plt.tight_layout()
     plt.savefig("notebooks/nonstationary_audio_demo.png", dpi=150,
                 bbox_inches="tight")
-    plt.show()
 
     print("Figure saved to notebooks/nonstationary_audio_demo.png")
     print("\nKey takeaway: The spectral mixture GP captures the frequency")

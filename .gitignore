@@ -8,9 +8,8 @@ venv/
 # macOS
 .DS_Store
 
-# Notebooks
+# Notebooks output — keep PNGs tracked for GitHub Pages
 *.ipynb_checkpoints/
-notebooks/*.png
 
 # PDFs (tracked in sources/ but too large for git)
 *.pdf
