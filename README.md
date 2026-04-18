@@ -19,15 +19,22 @@ The project grew out of a thesis on _Intuitive Audio Interaction and Control in 
 ```
 chaoshearing/
 ├── README.md
-├── index.md                  # GitHub Pages homepage
-├── sources/                  # Research papers and annotated bibliography
+├── index.md                       # GitHub Pages homepage
+├── sources/                       # Research papers and annotated bibliography
 │   ├── BIBLIOGRAPHY.md
 │   └── *.pdf
 ├── projects/
-│   ├── 01-listening-and-duets.md
-│   └── 02-spectral-cognition.md
+│   ├── 01-listening-and-duets.md  # Cochlear dynamics & scene analysis
+│   ├── 02-spectral-cognition.md   # Sound physics & auditory imagery
+│   └── 03-shape-grammar.md        # Cross-layer shape grammar
+├── grammar/                       # Formal shape grammar specification
+│   ├── primitives.yaml            # Shape vocabulary (tiles, oscillators, illusions)
+│   ├── rules.yaml                 # Production rules & cross-layer mappings
+│   ├── isomorphisms.yaml          # Structural isomorphisms across layers
+│   └── visualize.py               # Grammar → diagram renderer
 ├── notebooks/
-│   └── nonstationary_audio.py
+│   ├── nonstationary_audio.py     # Spectral mixture GP demo
+│   └── ep_kalman_viz.py           # EP via Kalman smoothing (Algorithm 1)
 └── _config.yml
 ```
 
@@ -43,23 +50,61 @@ The original thread: modeling the cochlea and auditory perception through the le
 
 _Sound Physics, Musical Imagery, and the Perception of Pitch_
 
-The newer thread: bridging the physics of sound (synthesis, physical modeling, probabilistic spectral analysis) with cognitive phenomena — perfect pitch, involuntary musical imagery, auditory hallucinations, and what these tell us about how the brain constructs sound.
+Bridging the physics of sound (synthesis, physical modeling, probabilistic spectral analysis) with cognitive phenomena — perfect pitch, involuntary musical imagery, auditory hallucinations, and what these tell us about how the brain constructs sound.
 
 ### [03 — Shape Grammar](https://intelligent-interfaces.github.io/chaoshearing/projects/03-shape-grammar)
 
 _A Layered Grammar Connecting Tile-Based GPU Computing, Auditory Science, and Perceptual Demos_
 
-The newest thread: defining a shape grammar that operates across three layers of a perceptual computing stack — GPU tile operations (TileGym), auditory science (Chaos Hearing), and perceptual demonstrations (McDermott Lab). Reveals structural isomorphisms between computational dispatch, cochlear dynamics, and perceptual illusions.
+A shape grammar that operates across three layers of a perceptual computing stack:
+
+| Layer         | Project                                                         | Role                                                                      |
+| :------------ | :-------------------------------------------------------------- | :------------------------------------------------------------------------ |
+| **Backend**   | [TileGym](https://github.com/NVIDIA/TileGym)                    | Computational substrate — CUDA tile kernels for GPU programming           |
+| **Interface** | Chaos Hearing                                                   | Scientific model — nonlinear dynamics, spectral cognition, scene analysis |
+| **Frontend**  | [McDermott Lab Demos](https://mcdermottlab.mit.edu/sounds.html) | Perceptual surface — auditory illusions and interactive demonstrations    |
+
+The grammar identifies structural isomorphisms across all three layers — the same patterns of **decomposition, dispatch, fusion, and reduction** recur from silicon to synapse to subjective experience. Seven worked examples trace each isomorphism through concrete code (TileGym's `@dispatch`, `splitk_reduce`, `PartiallyFusedSwiGLUMLP`, attention sinks, MoE routing), equations (Hopf bifurcation, spectral mixture kernels, EP via Kalman smoothing), and perceptual phenomena (cocktail party segregation, illusory continuity, texture perception, perceptual bistability).
+
+Extends into **causal uncertainty in sound objects** (manipulating the ambiguity of auditory causal inference) and **computational psychiatry** (perceptual disorders as production rule failures in the grammar).
+
+See the full document: [`SHAPE_GRAMMAR.md`](../SHAPE_GRAMMAR.md)
+
+## Grammar Specification
+
+The `grammar/` directory contains a machine-readable formal specification:
+
+- **`primitives.yaml`** — Shape vocabulary: tiles `T(M,N)`, oscillators `O(μ,ω₀)`, illusions `Ψ(stim,percept)`, and 15 other primitives with parameters, equations, and examples
+- **`rules.yaml`** — 15 within-layer production rules, 5 cross-layer isomorphisms, causal uncertainty rules, and computational psychiatry mappings
+- **`isomorphisms.yaml`** — Deep analogies (dispatch↔tonotopy, fusion↔texture, split-K↔cocktail party) with code and equation references
+- **`visualize.py`** — Matplotlib renderer for grammar diagrams (requires `matplotlib`, `pyyaml`)
+
+```bash
+# Generate the grammar overview diagram
+cd grammar && python visualize.py
+```
 
 ## Demos
 
 ### Nonstationary Audio Analysis
 
-A Python implementation exploring spectral mixture Gaussian processes for audio signal analysis — inspired by [Wilkinson et al. (2019)](https://arxiv.org/abs/1901.11436). See [`notebooks/nonstationary_audio.py`](notebooks/nonstationary_audio.py).
+Spectral mixture Gaussian process regression on a synthetic duet — a chirp (200→600 Hz) mixed with an amplitude-modulated 440 Hz tone. The GP captures the signal's frequency content probabilistically, with uncertainty, rather than through a fixed-resolution spectrogram.
+
+See [`notebooks/nonstationary_audio.py`](notebooks/nonstationary_audio.py) — inspired by [Wilkinson et al. (2019)](https://arxiv.org/abs/1901.11436).
+
+### EP via Kalman Smoothing
+
+Implementation of Algorithm 1 from Wilkinson et al. — Expectation Propagation inference in a state-space GP model via Kalman filtering (forward pass) and RTS smoothing (backward pass). The smoother consistently outperforms the filter (RMSE ~0.16 vs ~0.21) because it incorporates future observations.
+
+See [`notebooks/ep_kalman_viz.py`](notebooks/ep_kalman_viz.py).
 
 ## Sources
 
-See [`sources/BIBLIOGRAPHY.md`](sources/BIBLIOGRAPHY.md) for an annotated bibliography of the collected research papers.
+See [`sources/BIBLIOGRAPHY.md`](sources/BIBLIOGRAPHY.md) for an annotated bibliography of the collected research papers, organized by theme:
+
+- **Physics of Sound & Signal Analysis** — probabilistic audio inference, physical sound synthesis
+- **Mathematical Foundations** — algebraic QFT, superselection structure
+- **Cognition of Hearing & Neuroscience** — auditory processing, neural correlates
 
 ## License
 
