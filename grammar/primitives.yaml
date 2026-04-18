@@ -145,3 +145,35 @@ frontend:
       examples:
         - "BASS: Bayesian auditory scene synthesis"
         - "Physical: scraping/rolling with nonlinear constraints"
+
+improvisation:
+  name: Jazz of Physics
+  description: >
+    Real-time sequential generation under constraints — the structural
+    pattern shared by autoregressive decoding, jazz improvisation, and
+    generative listening. After Stephon Alexander (2016).
+  primitives:
+    - symbol: "J(context, prior, τ)"
+      name: Improvisation
+      description: Generate next element conditioned on context, shaped by prior, at temperature τ
+      parameters: [context, prior, temperature]
+      layers:
+        backend: "Autoregressive decode — sample from logits given KV cache"
+        interface: "Jazz solo — play next note given changes and melodic knowledge"
+        frontend: "Generative listening — infer scene given mixture and source priors"
+
+    - symbol: "T₄"
+      name: Coltrane Transposition
+      description: Major-third transposition — Z₃ generator on Z₁₂ pitch space
+      parameters: [semitones]
+      equation: "I → I · T₄ · T₄ · T₄ = I (mod octave)"
+      reference: "Coltrane Changes — Giant Steps (1960)"
+
+    - symbol: "τ"
+      name: Temperature
+      description: Exploration-exploitation parameter controlling generation diversity
+      parameters: [value]
+      continuum:
+        - "τ → 0: deterministic, inside the changes (bebop / greedy decode)"
+        - "τ = 1: balanced (standard sampling / mainstream jazz)"
+        - "τ → ∞: uniform random, outside the changes (free jazz / random sampling)"

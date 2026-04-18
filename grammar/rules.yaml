@@ -191,3 +191,54 @@ computational_psychiatry:
       rule: "O(locked) → persistent_activation"
       description: Oscillator locked in limit cycle without stimulus
       backend_analogue: Stuck dispatch — persistent activation loop
+
+improvisation:
+  description: >
+    Real-time sequential generation under constraints — the structural
+    pattern shared by autoregressive LLM decoding, jazz improvisation,
+    and generative listening. Inspired by Stephon Alexander's
+    "The Jazz of Physics" (2016).
+  rules:
+    - id: IMP1
+      name: Autoregressive Generation
+      rule: "context(t-1) + prior → sample(t) → context(t)"
+      description: Each step conditioned on accumulated context and shaped by learned prior
+      layers:
+        backend: "KV cache + model weights → sample from logits → extend cache"
+        interface: "Chord changes + melodic knowledge → play next note → update context"
+        frontend: "Acoustic mixture + source priors → infer scene → update belief"
+
+    - id: IMP2
+      name: Coltrane Substitution
+      rule: "I → I · T₄ · T₄ · T₄"
+      description: >
+        Transpose resolution target by major thirds (Z₃ acting on Z₁₂).
+        Coltrane Changes as group-theoretic production rule on pitch space.
+      reference: "Alexander (2016), Coltrane — Giant Steps (1960)"
+
+    - id: IMP3
+      name: Temperature / Inside-Outside
+      rule: "P(next | context, τ) where τ controls exploration-exploitation"
+      description: >
+        Low temperature = predictable, inside the changes (bebop).
+        High temperature = surprising, outside the changes (free jazz).
+        Maps to sampling temperature in LLM decoding and posterior
+        sharpness in Bayesian scene inference.
+
+    - id: IMP4
+      name: Compressed Context
+      rule: "full_history → compressed_representation → attend"
+      description: >
+        MLA compresses KV cache into latent representations.
+        A musician internalizes the changes rather than reading the chart.
+        A listener builds a statistical summary rather than storing the waveform.
+
+    - id: IMP5
+      name: Cosmic Inharmonicity
+      rule: "CMB_peaks ≈ [1, 2.45, 3.68] · f₀ → not_quite_harmonic"
+      description: >
+        The CMB acoustic oscillation peaks are shifted from integer
+        harmonics by the baryon-to-photon ratio — the universe's first
+        sound is slightly inharmonic, a cosmic instance of the
+        inharmonicity manipulation in auditory grouping experiments.
+      reference: "Alexander (2016)"

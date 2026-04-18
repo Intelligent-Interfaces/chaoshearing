@@ -71,6 +71,11 @@ isomorphism_table:
     interface: "Posterior variance"
     frontend: "Causal ambiguity"
 
+  - concept: Improvisation
+    backend: "Autoregressive decode"
+    interface: "Jazz solo over changes"
+    frontend: "Generative listening (BASS)"
+
 deep_analogies:
   - name: "The Dispatch-Tuning Correspondence"
     description: >
@@ -109,3 +114,22 @@ deep_analogies:
     backend_code: "R(attn_splitk_out, lse_splitk_out) → attn_out"
     interface_model: "Σ(mixed) → S₁ + S₂ + … + Sₙ"
     frontend_demo: "Cocktail Party"
+
+  - name: "The Autoregressive / Jazz Improvisation Correspondence"
+    description: >
+      LLM autoregressive decoding generates tokens one at a time,
+      each conditioned on the full accumulated context (KV cache)
+      and shaped by learned weights (the prior). Jazz improvisation
+      generates notes one at a time, each conditioned on the harmonic
+      context (chord changes + what's been played) and shaped by
+      musical knowledge (the prior). Generative listening (BASS)
+      infers scene decompositions conditioned on the acoustic mixture
+      and shaped by learned source priors. All three are real-time
+      sequential generation under constraints. Inspired by Stephon
+      Alexander's "The Jazz of Physics" (2016), which identifies
+      the group-theoretic structure of Coltrane's harmonic
+      substitutions (Z₃ on Z₁₂) as a production rule on pitch space.
+    backend_code: "fmha_decode(q, k, v) → next token logits"
+    interface_model: "P(noteₜ | chord_context, melodic_prior) → play noteₜ"
+    frontend_demo: "Listening with Generative Models (BASS)"
+    reference: "Alexander, S. (2016). The Jazz of Physics. Basic Books."
