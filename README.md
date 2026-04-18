@@ -1,7 +1,5 @@
 # Chaos Hearing
 
-_[Erick Oduniyi](https://eoduniyi.github.io/erick.light/)_
-
 > At the intersection of sound physics, auditory cognition, and interface design.
 
 ---
