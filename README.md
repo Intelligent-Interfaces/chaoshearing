@@ -45,6 +45,12 @@ _Sound Physics, Musical Imagery, and the Perception of Pitch_
 
 The newer thread: bridging the physics of sound (synthesis, physical modeling, probabilistic spectral analysis) with cognitive phenomena — perfect pitch, involuntary musical imagery, auditory hallucinations, and what these tell us about how the brain constructs sound.
 
+### [03 — Shape Grammar](https://intelligent-interfaces.github.io/chaoshearing/projects/03-shape-grammar)
+
+_A Layered Grammar Connecting Tile-Based GPU Computing, Auditory Science, and Perceptual Demos_
+
+The newest thread: defining a shape grammar that operates across three layers of a perceptual computing stack — GPU tile operations (TileGym), auditory science (Chaos Hearing), and perceptual demonstrations (McDermott Lab). Reveals structural isomorphisms between computational dispatch, cochlear dynamics, and perceptual illusions.
+
 ## Demos
 
 ### Nonstationary Audio Analysis

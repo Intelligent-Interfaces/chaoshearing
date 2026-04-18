@@ -1,0 +1,193 @@
+# Shape Grammar Production Rules
+# Rules transform primitives within and across layers
+
+within_layer:
+  backend:
+    - id: R1
+      name: Tile Contraction
+      rule: "T(M,N) × T(N,K) → T(M,K)"
+      description: Matrix multiplication as tile contraction
+      tilegym_op: matmul
+
+    - id: R2
+      name: Kernel Fusion
+      rule: "F(linear ∘ activation ∘ linear) → T_fused"
+      description: Fuse multiple ops into single kernel pass
+      tilegym_op: get_fused_swiglu_module
+
+    - id: R3
+      name: Attention Decomposition
+      rule: "A(Q,K,V) → softmax(QKᵀ/√d) · V"
+      description: Decompose attention into score computation and value aggregation
+      tilegym_op: fmha
+
+    - id: R4
+      name: Backend Dispatch
+      rule: "D(op, *) → D(op, cutile) | D(op, pytorch)"
+      description: Select implementation based on available backend
+      tilegym_op: dispatch
+
+    - id: R5
+      name: Split-K Reduction
+      rule: "R(T₁‖T₂‖…‖Tₖ) → T_final"
+      description: Parallel split, independent compute, final reduction
+      tilegym_op: splitk_reduce
+
+  interface:
+    - id: R6
+      name: Hopf Criticality
+      rule: "O(μ→0⁺, ω₀) → bifurcation → oscillation"
+      description: Cochlear oscillator crosses bifurcation point
+      reference: "Eguíluz et al. (2000)"
+
+    - id: R7
+      name: Auditory Scene Analysis
+      rule: "Σ(mixed) → S₁ + S₂ + … + Sₙ"
+      description: Decompose acoustic mixture into perceptual streams
+      reference: "Bregman (1990)"
+
+    - id: R8
+      name: Spectral Inference
+      rule: "K(ω₁,ω₂,…) × data → P(posterior)"
+      description: GP inference with spectral mixture kernels
+      reference: "Wilkinson et al. (2019)"
+
+    - id: R9
+      name: Generative Activation
+      rule: "P(prior) + silence → I(imagery)"
+      description: Internal predictive model generates percept without input
+      connection: "Musical imagery, earworms"
+
+    - id: R10
+      name: Predictive Excess
+      rule: "I(imagery) + loss_of_constraint → hallucination"
+      description: Unconstrained generative model produces false percepts
+      connection: "Computational psychiatry"
+
+  frontend:
+    - id: R11
+      name: Texture Equivalence
+      rule: "X(stats₁) ≈ X(stats₂) → perceptual_equivalence"
+      description: Sounds with matched statistics are perceptually interchangeable
+      demo: "Model-Matched Sounds"
+
+    - id: R12
+      name: Cue Integration
+      rule: "G(harmonicity) + G(onset) → S(grouped)"
+      description: Multiple grouping cues combine to form a stream
+      demo: "Auditory Grouping Cues"
+
+    - id: R13
+      name: Illusory Continuation
+      rule: "signal + noise_mask → C(illusory_continuation)"
+      description: Masked signal is perceived as continuing behind the mask
+      demo: "Spectral Completion, Illusory Texture"
+
+    - id: R14
+      name: Generative Listening
+      rule: "Ω(BASS_model) → Σ(inferred_scene)"
+      description: Bayesian model infers scene structure from mixture
+      demo: "Listening with Generative Models"
+      reference: "Cusimano, Hewitt, & McDermott (2024)"
+
+    - id: R15
+      name: Illusion as Probe
+      rule: "Ψ(inharmonic_speech) → Δ(segregation_failure)"
+      description: Manipulating harmonicity reveals segregation mechanisms
+      demo: "Inharmonic Speech Segregation"
+
+cross_layer:
+  - id: X1
+    name: Dispatch ↔ Tuning ↔ Framing
+    mapping:
+      backend: "D(op, backend) — route to correct implementation"
+      interface: "O(μ, ω₀) — tune oscillator to characteristic frequency"
+      frontend: "Ψ(stimulus, percept) — select perceptual interpretation"
+    principle: "Selective routing of information to specialized processors"
+
+  - id: X2
+    name: Fusion ↔ Spectral Composition ↔ Texture
+    mapping:
+      backend: "F(op₁ ∘ op₂) — fuse operations into single pass"
+      interface: "K(spectral_mixture) — compose spectral components"
+      frontend: "X(texture_statistics) — perceive fused texture as whole"
+    principle: "Combining multiple components into a unified representation"
+
+  - id: X3
+    name: Reduction ↔ Scene Integration ↔ Segregation
+    mapping:
+      backend: "R(split → merge) — split-K parallel reduction"
+      interface: "Σ(S₁+S₂+…) → scene — integrate streams"
+      frontend: "Δ(mixture → sources) — segregate sources"
+    principle: "Parallel decomposition followed by coherent recomposition"
+
+  - id: X4
+    name: Attention ↔ Prediction ↔ Grouping
+    mapping:
+      backend: "A(Q,K,V) — selective attention over sequences"
+      interface: "P(prior, likelihood) — Bayesian selective updating"
+      frontend: "G(cue₁, cue₂) — perceptual grouping by cues"
+    principle: "Selective weighting of information based on relevance"
+
+  - id: X5
+    name: Normalization ↔ Compression ↔ Continuity
+    mapping:
+      backend: "N(x, ε) — normalize/stabilize activations"
+      interface: "O(μ→0, compressive) — cochlear compression and gain"
+      frontend: "C(continuity) — perceptual filling-in stabilizes percept"
+    principle: "Stabilizing representations against variation and noise"
+
+meta_rule:
+  name: Selective Decomposition and Recomposition
+  pattern: |
+    INPUT (complex, entangled)
+      → DECOMPOSE into tiles / oscillators / streams
+      → DISPATCH to specialized processors / channels / frames
+      → TRANSFORM via fused kernels / spectral inference / prediction
+      → REDUCE via split-K / scene integration / perceptual binding
+      → OUTPUT (structured, interpreted)
+
+causal_uncertainty:
+  description: >
+    Manipulating causal uncertainty in sound objects — the degree to which
+    the auditory system's causal inference about sound sources is underdetermined.
+  rules:
+    - id: CU1
+      name: Causal Ambiguity
+      rule: "Ω(model₁) ≈ Ω(model₂) → causal_ambiguity"
+      description: Different physical models produce perceptually similar sounds
+
+    - id: CU2
+      name: Bayesian Causal Inference
+      rule: "P(cause|sound) = P(sound|cause)·P(cause) / P(sound)"
+      description: Prior beliefs about causes shape perception
+
+    - id: CU3
+      name: Perceptual Multistability
+      rule: "Ψ(ambiguous_cause) → bistable_percept"
+      description: Causal uncertainty produces alternating interpretations
+
+computational_psychiatry:
+  description: >
+    The grammar extends into computational psychiatry via predictive processing.
+    Perceptual disorders are production rule failures.
+  conditions:
+    - name: Normal Perception
+      rule: "P(prior) + data → P(posterior)"
+      description: Balanced Bayesian update
+      backend_analogue: Correct dispatch, balanced fusion
+
+    - name: Musical Imagery
+      rule: "P(prior) + ∅ → I(vivid)"
+      description: Prior-driven generation without input
+      backend_analogue: Generative mode (no input tensor)
+
+    - name: Auditory Hallucination
+      rule: "P(prior) ≫ data → Ψ(false_percept)"
+      description: Prior dominates over sensory evidence
+      backend_analogue: Dispatch override — prior overrides data
+
+    - name: Tinnitus
+      rule: "O(locked) → persistent_activation"
+      description: Oscillator locked in limit cycle without stimulus
+      backend_analogue: Stuck dispatch — persistent activation loop

@@ -1,0 +1,147 @@
+# Shape Grammar Primitives
+# Each layer contributes a vocabulary of atomic shapes
+
+backend:
+  name: TileGym
+  description: CUDA Tile kernel library — the computational substrate
+  primitives:
+    - symbol: "T(M,N)"
+      name: Tile
+      description: Rectangular block of data, fundamental unit of GPU work
+      parameters: [M, N] # tile dimensions
+      examples:
+        - "T(128,128) — standard GEMM tile"
+        - "T(B,H,S,D) — attention tile over batch, heads, sequence, dimension"
+
+    - symbol: "D(op, backend)"
+      name: Dispatch
+      description: Route an operation to the correct backend implementation
+      parameters: [op, backend]
+      examples:
+        - "D(matmul, cutile)"
+        - "D(fmha, pytorch)  # fallback"
+
+    - symbol: "F(op₁ ∘ op₂)"
+      name: Fusion
+      description: Combine multiple operations into a single kernel pass
+      parameters: [operations]
+      examples:
+        - "F(linear ∘ silu ∘ mul)  # SwiGLU fusion"
+        - "F(gemm ∘ rms ∘ scale)   # mHC fusion"
+
+    - symbol: "R(split → merge)"
+      name: Reduction
+      description: Split-K pattern — divide, compute in parallel, reduce
+      parameters: [num_splits, reduce_op]
+      examples:
+        - "R(T₁‖T₂‖…‖Tₖ → T_final)  # split-K GEMM"
+        - "R(attn_splits → attn_out)   # flash decode reduction"
+
+    - symbol: "A(Q,K,V)"
+      name: Attention
+      description: Selective information routing via query-key-value
+      parameters: [Q, K, V, scaling, causal]
+      examples:
+        - "A(Q,K,V) with causal mask  # prefill FMHA"
+        - "A(Q,K,V) with sink tokens  # attention sink"
+
+    - symbol: "N(x, ε)"
+      name: Normalization
+      description: Stabilize signals by centering and scaling
+      parameters: [input, epsilon, weight]
+      examples:
+        - "N(x, 1e-6) with weight  # RMSNorm"
+        - "N(x, 1e-5) with bias    # LayerNorm"
+
+interface:
+  name: Chaos Hearing
+  description: Auditory science — nonlinear dynamics, spectral cognition, scene analysis
+  primitives:
+    - symbol: "O(μ, ω₀)"
+      name: Oscillator
+      description: Hopf oscillator near bifurcation — cochlear hair cell model
+      parameters: [mu, omega_0, a, noise]
+      equation: "dz/dt = (μ + iω₀)z - (a + i/3)|z|²z + n_z(t)"
+      properties:
+        - "Sensitivity: ~1000× amplification near criticality"
+        - "Compressive nonlinearity: 120 dB dynamic range"
+        - "Sharp frequency selectivity"
+        - "Spontaneous otoacoustic emissions"
+
+    - symbol: "S(source)"
+      name: Stream
+      description: Auditory stream — perceptual grouping of acoustic elements
+      parameters: [source_id, frequency_range, temporal_extent]
+      grouping_cues:
+        - harmonicity
+        - common_onset_offset
+        - frequency_proximity
+        - common_modulation
+
+    - symbol: "K(spectral)"
+      name: Kernel
+      description: Spectral mixture kernel — GP prior over frequency content
+      parameters: [frequencies, lengthscales, weights]
+      reference: "Wilkinson et al. (2019) arXiv:1901.11436"
+
+    - symbol: "Σ(S₁, S₂, …)"
+      name: Scene
+      description: Auditory scene — full ensemble of concurrent streams
+      parameters: [streams]
+      reference: "Bregman (1990) Auditory Scene Analysis"
+
+    - symbol: "P(prior, likelihood)"
+      name: Prediction
+      description: Bayesian update — brain's predictive model of incoming sound
+      parameters: [prior, likelihood, posterior]
+      continuum:
+        - "Normal: balanced prior-likelihood integration"
+        - "Imagery: prior-driven, no external input"
+        - "Hallucination: prior dominates over data"
+
+    - symbol: "I(generative)"
+      name: Imagery
+      description: Endogenous activation — hearing without external stimulus
+      parameters: [content, vividness, voluntariness]
+      examples:
+        - "Earworm: involuntary, vivid, specific melody"
+        - "Rehearsal: voluntary, variable vividness"
+
+frontend:
+  name: McDermott Lab Demos
+  description: Auditory illusions and perceptual demonstrations
+  source: "https://mcdermottlab.mit.edu/sounds.html"
+  primitives:
+    - symbol: "Ψ(stimulus, percept)"
+      name: Illusion
+      description: Divergence between physical signal and subjective experience
+      parameters: [stimulus, percept, divergence_type]
+
+    - symbol: "X(statistics)"
+      name: Texture
+      description: Sound texture — perception governed by time-averaged statistics
+      parameters: [marginal_stats, correlation_stats, modulation_stats]
+
+    - symbol: "G(cue₁, cue₂, …)"
+      name: Grouping
+      description: Perceptual grouping by auditory cues
+      parameters: [cues]
+      cue_types: [harmonicity, onset, proximity, modulation, continuity]
+
+    - symbol: "Δ(mixture → sources)"
+      name: Segregation
+      description: Source separation — the cocktail party problem
+      parameters: [mixture, inferred_sources, confidence]
+
+    - symbol: "C(interrupted → continuous)"
+      name: Continuity
+      description: Illusory continuation — filling in masked segments
+      parameters: [signal, mask, percept]
+
+    - symbol: "Ω(model → sound)"
+      name: Synthesis
+      description: Generative model producing audible output
+      parameters: [model_type, constraints, output]
+      examples:
+        - "BASS: Bayesian auditory scene synthesis"
+        - "Physical: scraping/rolling with nonlinear constraints"

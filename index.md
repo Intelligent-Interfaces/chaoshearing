@@ -27,6 +27,12 @@ _Sound Physics, Musical Imagery, and the Perception of Pitch_
 
 Bridging the physics of sound with cognitive phenomena — perfect pitch, involuntary musical imagery, auditory hallucinations.
 
+### [03 — Shape Grammar]({{ site.baseurl }}/projects/03-shape-grammar)
+
+_A Layered Grammar Connecting Tile-Based GPU Computing, Auditory Science, and Perceptual Demos_
+
+Defining a shape grammar across three layers — from GPU tiles (TileGym) to cochlear oscillators (Chaos Hearing) to auditory illusions (McDermott Lab) — revealing structural isomorphisms between silicon and perception.
+
 ---
 
 Contact: [Erick Oduniyi](mailto:eeoduniyi@gmail.com)

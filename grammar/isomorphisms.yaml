@@ -1,0 +1,111 @@
+# Cross-Layer Structural Isomorphisms
+# The deep connections that make a single grammar span all three layers
+
+thesis: >
+  The same structural patterns — tiling, dispatch, fusion, decomposition,
+  and reduction — recur at every level, from silicon to synapse to
+  subjective experience.
+
+layers:
+  backend:
+    project: TileGym
+    domain: CUDA Tile kernels, GPU tiling
+    role: Computational substrate
+    grammar_summary: "decompose → dispatch → tile → fuse → reduce"
+
+  interface:
+    project: Chaos Hearing
+    domain: Auditory science, nonlinear dynamics, spectral cognition
+    role: Scientific model
+    grammar_summary: "transduce → decompose → infer → group → predict"
+
+  frontend:
+    project: McDermott Lab Demos
+    domain: Auditory illusions, scene analysis, generative listening
+    role: Perceptual surface
+    grammar_summary: "stimulate → analyze → group → bind → perceive"
+
+isomorphism_table:
+  - concept: Primitive
+    backend: "Tile T(M,N)"
+    interface: "Oscillator O(μ,ω₀)"
+    frontend: "Illusion Ψ(stim,percept)"
+
+  - concept: Decomposition
+    backend: "Tile blocking"
+    interface: "Cochlear frequency analysis"
+    frontend: "Auditory scene analysis"
+
+  - concept: Dispatch
+    backend: "Backend selector"
+    interface: "Frequency-place mapping"
+    frontend: "Perceptual frame selection"
+
+  - concept: Fusion
+    backend: "Kernel fusion F(∘)"
+    interface: "Spectral mixture kernel"
+    frontend: "Texture perception"
+
+  - concept: Reduction
+    backend: "Split-K merge"
+    interface: "Scene integration"
+    frontend: "Source segregation"
+
+  - concept: Attention
+    backend: "A(Q,K,V)"
+    interface: "Bayesian prediction P"
+    frontend: "Grouping cues G"
+
+  - concept: Normalization
+    backend: "RMS/LayerNorm"
+    interface: "Cochlear compression"
+    frontend: "Perceptual continuity"
+
+  - concept: Failure Mode
+    backend: "Wrong dispatch"
+    interface: "Hallucination"
+    frontend: "Illusion"
+
+  - concept: Uncertainty
+    backend: "Backend fallback"
+    interface: "Posterior variance"
+    frontend: "Causal ambiguity"
+
+deep_analogies:
+  - name: "The Dispatch-Tuning Correspondence"
+    description: >
+      TileGym's @dispatch decorator selects the right kernel implementation
+      for an operation. The cochlea's tonotopic map selects the right
+      oscillator for a frequency. The perceptual system selects the right
+      interpretive frame for a stimulus. All three are instances of
+      selective routing to specialized processors.
+    backend_code: |
+      @dispatch("fmha")
+      def fmha(q, k, v, scaling=None, is_causal=True):
+          ...
+    interface_equation: "dz/dt = (μ + iω₀)z - (a + i/3)|z|²z + n_z(t)"
+    frontend_demo: "Inharmonic Speech Segregation"
+
+  - name: "The Fusion-Texture Correspondence"
+    description: >
+      Kernel fusion combines multiple operations into a single pass,
+      eliminating intermediate materializations. Spectral mixture kernels
+      combine multiple frequency components into a single probabilistic
+      model. Texture perception combines multiple acoustic statistics
+      into a single perceptual quality. All three eliminate intermediate
+      representations in favor of holistic processing.
+    backend_code: "F(linear ∘ silu ∘ mul) → SwiGLU_fused"
+    interface_model: "K(ω) = Σᵢ wᵢ exp(-2π²ℓᵢ²τ²) cos(2πωᵢτ)"
+    frontend_demo: "Model-Matched Sounds"
+
+  - name: "The Split-K / Cocktail Party Correspondence"
+    description: >
+      Split-K reduction divides a large computation into independent
+      parallel chunks, then merges results. The cocktail party problem
+      requires the auditory system to process a mixture in parallel
+      frequency bands, then merge the results into segregated sources.
+      Both are instances of parallel decomposition followed by
+      coherent recomposition.
+    backend_code: "R(attn_splitk_out, lse_splitk_out) → attn_out"
+    interface_model: "Σ(mixed) → S₁ + S₂ + … + Sₙ"
+    frontend_demo: "Cocktail Party"
