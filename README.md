@@ -18,6 +18,14 @@ The project grew out of a thesis on _Intuitive Audio Interaction and Control in 
 chaoshearing/
 ├── README.md
 ├── index.md                       # GitHub Pages homepage
+├── casa/                          # Computational Auditory Scene Analysis library
+│   ├── __init__.py                # Package API
+│   ├── kernels.py                 # Spectral mixture GPs & probabilistic TF analysis
+│   ├── kalman.py                  # EP via Kalman smoothing (state-space GP, O(N))
+│   ├── graphs.py                  # Similarity graphs & spectral geometry
+│   ├── diffusion.py               # Absorbing-state discrete diffusion
+│   ├── oscillators.py             # Hopf bifurcation cochlear model & filterbank
+│   └── README.md                  # Module documentation
 ├── sources/                       # Research papers and annotated bibliography
 │   ├── BIBLIOGRAPHY.md
 │   └── *.pdf
@@ -35,6 +43,28 @@ chaoshearing/
 │   └── ep_kalman_viz.py           # EP via Kalman smoothing (Algorithm 1)
 └── _config.yml
 ```
+
+## `casa` — Computational Auditory Scene Analysis Library
+
+The `casa/` package provides composable signal processing primitives for probabilistic auditory analysis:
+
+```python
+from casa import gp_regression, ep_kalman_smoother, cochlear_filterbank
+from casa import build_similarity_graph, graph_laplacian, spectral_analysis
+from casa import AbsorbingDiffusion
+```
+
+| Module        | What it does                                                          | Complexity |
+| :------------ | :-------------------------------------------------------------------- | :--------- |
+| `kernels`     | Spectral mixture GP inference — probabilistic time-frequency analysis | O(N³)      |
+| `kalman`      | EP via Kalman smoothing — state-space GP for long signals             | O(N)       |
+| `graphs`      | Similarity graphs & Laplacian spectral analysis                       | O(N² k)    |
+| `diffusion`   | Absorbing-state discrete diffusion for structured sequences           | O(T·L)     |
+| `oscillators` | Hopf bifurcation cochlear model & tonotopic filterbank                | O(C·T)     |
+
+These compose into a full CASA pipeline: signal → transduction → spectral decomposition → temporal tracking → scene structure → generative reconstruction.
+
+See [`casa/README.md`](casa/README.md) for detailed API documentation.
 
 ## Projects
 
