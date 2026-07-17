@@ -17,3 +17,7 @@ venv/
 # IDE
 .vscode/
 .idea/
+*.aux
+*.log
+*.out
+*.pdf
