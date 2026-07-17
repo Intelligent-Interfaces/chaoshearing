@@ -61,6 +61,21 @@ isomorphism_table:
     interface: "Cochlear compression"
     frontend: "Perceptual continuity"
 
+  - concept: Self-Supervision
+    backend: "Student-Teacher EMA alignment"
+    interface: "Learnable filterbank"
+    frontend: "Illusory restoration"
+
+  - concept: Causal Uncertainty
+    backend: "Objective function optimization (minimize target distance)"
+    interface: "Precision-weighting (balancing prior vs. likelihood)"
+    frontend: "Ambiguity resolution (hearing voices in noise)"
+
+  - concept: Spectral Filtering
+    backend: "Fixed Hankel eigenvector convolution (no gradient)"
+    interface: "Cochlear tonotopic map (physically fixed resonance)"
+    frontend: "Absolute pitch perception (fixed internal template)"
+
   - concept: Failure Mode
     backend: "Wrong dispatch"
     interface: "Hallucination"
@@ -133,3 +148,56 @@ deep_analogies:
     interface_model: "P(noteₜ | chord_context, melodic_prior) → play noteₜ"
     frontend_demo: "Listening with Generative Models (BASS)"
     reference: "Alexander, S. (2016). The Jazz of Physics. Basic Books."
+
+  - name: "The Self-Supervision / Learned Cochlea / Predictive Restoration Correspondence"
+    description: >
+      In deep learning backends, self-supervised representation learning aligns
+      a Student network's predictions with a Teacher network's representations
+      (updated via weight EMA, centered and sharpened to prevent representation
+      collapse). In the audition interface, the Audio Transformer learns its
+      own adaptable time-frequency front-end (sinusoids, windowing, onsets)
+      directly from raw waveforms, replacing fixed spectrograms. In the perceptual
+      frontend, listeners perform part-whole inference, restoring missing fragments
+      of sound masked by noise (illusory continuation). All three represent the
+      system adapting its internal filters to predict global, coherent representations
+      from local, partial observations.
+    backend_code: "align(student, teacher_ema) ∘ prevent_collapse(centering, sharpening)"
+    interface_model: "dense(waveform) → filterbank(sinusoids, windowing, onsets)"
+    frontend_demo: "Illusory Continuation / Spectral Completion"
+    reference: "Verma & Berger (2021)"
+
+  - name: "The Hankel Eigendecomposition / Cochlear Resonance / Absolute Pitch Correspondence"
+    description: >
+      The Spectral STU uses fixed convolutional filters derived from the
+      eigendecomposition of a Hankel matrix — filters that are never trained
+      but capture the mathematical structure of sequences themselves. The
+      cochlea's basilar membrane provides a physically fixed tonotopic map:
+      its resonant modes are determined by structural mechanics (stiffness
+      gradients, mass distribution), not by neural learning. In perception,
+      absolute pitch — the rare ability to identify frequencies without a
+      reference — suggests the existence of a fixed internal frequency
+      template that is not learned but structurally given. All three represent
+      processing through invariant, structurally determined spectral bases
+      rather than through adaptive, learned representations.
+    backend_code: "eig_vals, eig_vecs = eigh(Hankel(n)); conv(eig_vecs, input)"
+    interface_model: "h(t) = e^{-γt} sin(2πf_c t), f_c determined by basilar membrane position"
+    frontend_demo: "Absolute Pitch / Tonotopic Invariance"
+    reference: "Agarwal et al. (2024); Eguíluz et al. (2000)"
+
+  - name: "The Objective Optimization / Precision Weighting / Free Energy Correspondence"
+    description: >
+      In the YAMNet optimization loop, the system modifies sound parameters to minimize
+      the distance between current prediction entropy ($H_{cu}$) and a target entropy.
+      In computational psychiatry (Predictive Coding), the brain precision-weights
+      sensory evidence against internal priors to minimize surprise (Free Energy).
+      If sensory evidence is artificially made ambiguous (high entropy), a neurotypical
+      brain remains uncertain, but a maladaptive brain with overly precise priors
+      (e.g., schizophrenia) hallucinates a cause to resolve the uncertainty.
+      In all three cases, the system attempts to resolve a mismatch between expected
+      and actual distributions by either altering the internal model or the external state.
+    backend_code: "loss = |H_cu(θ) - target_H_cu|; minimize(loss, θ)"
+    interface_model: "μ_post = (π_lik μ_lik + π_prior μ_prior) / (π_lik + π_prior)"
+    frontend_demo: "Auditory Hallucinations in Noise"
+    reference: "Boger et al. (2021); Friston (2010)"
+
+

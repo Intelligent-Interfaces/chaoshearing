@@ -33,6 +33,12 @@ within_layer:
       description: Parallel split, independent compute, final reduction
       tilegym_op: splitk_reduce
 
+    - id: R5b
+      name: Student-Teacher Alignment
+      rule: "align(student, teacher_ema) ∘ Centering(center) ∘ Sharpening(τ) → representation"
+      description: Distill representations using exponential moving average and collapse prevention
+      tilegym_op: ema_distill
+
   interface:
     - id: R6
       name: Hopf Criticality
@@ -63,6 +69,12 @@ within_layer:
       rule: "I(imagery) + loss_of_constraint → hallucination"
       description: Unconstrained generative model produces false percepts
       connection: "Computational psychiatry"
+
+    - id: R10b
+      name: Learnable Filterbank
+      rule: "dense(waveform) → filterbank(sinusoids, windowing, onsets)"
+      description: Adaptable time-frequency representation learned directly from raw signals
+      reference: "Verma & Berger (2021)"
 
   frontend:
     - id: R11
@@ -95,6 +107,12 @@ within_layer:
       rule: "Ψ(inharmonic_speech) → Δ(segregation_failure)"
       description: Manipulating harmonicity reveals segregation mechanisms
       demo: "Inharmonic Speech Segregation"
+
+    - id: R15b
+      name: Illusory Restoration
+      rule: "predict(snippets) + mask → restoration"
+      description: Reconstruct global acoustic object from partial masked snippets
+      demo: "Illusory Continuation"
 
 cross_layer:
   - id: X1
@@ -136,6 +154,14 @@ cross_layer:
       interface: "O(μ→0, compressive) — cochlear compression and gain"
       frontend: "C(continuity) — perceptual filling-in stabilizes percept"
     principle: "Stabilizing representations against variation and noise"
+
+  - id: X6
+    name: Representation Learning ↔ Learned Cochlea ↔ Illusory Restoration
+    mapping:
+      backend: "EMA(student, teacher) — distill robust representations"
+      interface: "dense(waveform) — learn sinusoids, windows, and onsets"
+      frontend: "restore(snippets) — predict global object from partial views"
+    principle: "Adapting sensory interfaces to predict global coherence from local parts"
 
 meta_rule:
   name: Selective Decomposition and Recomposition

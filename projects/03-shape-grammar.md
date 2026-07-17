@@ -42,18 +42,19 @@ INPUT (complex, entangled)
 
 ## Cross-Layer Isomorphisms
 
-| Concept       | Backend (TileGym)     | Interface (Chaos Hearing)   | Frontend (McDermott Demos)  |
-| :------------ | :-------------------- | :-------------------------- | :-------------------------- |
-| Primitive     | Tile `T(M,N)`         | Oscillator `O(μ,ω₀)`        | Illusion `Ψ(stim,percept)`  |
-| Decomposition | Tile blocking         | Cochlear frequency analysis | Auditory scene analysis     |
-| Dispatch      | Backend selector      | Frequency-place mapping     | Perceptual frame selection  |
-| Fusion        | Kernel fusion         | Spectral mixture kernel     | Texture perception          |
-| Reduction     | Split-K merge         | Scene integration           | Source segregation          |
-| Attention     | `A(Q,K,V)`            | Bayesian prediction         | Grouping cues               |
-| Normalization | RMS/LayerNorm         | Cochlear compression        | Perceptual continuity       |
-| Improvisation | Autoregressive decode | Jazz solo over changes      | Generative listening (BASS) |
-| Failure mode  | Wrong dispatch        | Hallucination               | Illusion                    |
-| Uncertainty   | Backend fallback      | Posterior variance          | Causal ambiguity            |
+| Concept          | Backend (TileGym)           | Interface (Chaos Hearing)   | Frontend (McDermott Demos)  |
+| :--------------- | :-------------------------- | :-------------------------- | :-------------------------- |
+| Primitive        | Tile `T(M,N)`               | Oscillator `O(μ,ω₀)`        | Illusion `Ψ(stim,percept)`  |
+| Decomposition    | Tile blocking               | Cochlear frequency analysis | Auditory scene analysis     |
+| Dispatch         | Backend selector            | Frequency-place mapping     | Perceptual frame selection  |
+| Fusion           | Kernel fusion               | Spectral mixture kernel     | Texture perception          |
+| Reduction        | Split-K merge               | Scene integration           | Source segregation          |
+| Attention        | `A(Q,K,V)`                  | Bayesian prediction         | Grouping cues               |
+| Normalization    | RMS/LayerNorm               | Cochlear compression        | Perceptual continuity       |
+| Improvisation    | Autoregressive decode       | Jazz solo over changes      | Generative listening (BASS) |
+| Self-Supervision | Student-Teacher EMA alignment | Learnable filterbank        | Illusory restoration        |
+| Failure mode     | Wrong dispatch              | Hallucination               | Illusion                    |
+| Uncertainty      | Backend fallback            | Posterior variance          | Causal ambiguity            |
 
 ---
 
@@ -153,6 +154,16 @@ Alexander's most striking connection: the CMB acoustic oscillation peaks are at 
 | Compression | MLA latent KV        | Internalized changes    | Statistical summary       |
 
 **The isomorphism**: Real-time sequential generation under constraints, where each step is conditioned on accumulated context and shaped by a learned prior, with a temperature parameter controlling exploration-exploitation.
+
+### 9. Self-Supervision — Student-Teacher to Learnable Cochlea to Illusory Restoration
+
+In deep learning backends, self-supervised representation learning (e.g., DINO) uses a **Student-Teacher alignment** where the Student predicts the representation of a global crop from a local crop, while the Teacher's weights are slowly updated via an Exponential Moving Average (EMA), and centering/sharpening prevents collapse.
+
+In the audition interface, the **Audio Transformer (Adieu Convolutions)** learns its own time-frequency front-end representation directly from raw waveforms. Instead of using a fixed, hand-crafted STFT Mel-scale, a dense layer maps raw 25ms waveform patches into a learnable filter bank, discovering windowing functions (Hamming/Hanning), sinusoidal bases, and onset detectors optimized for the auditory task.
+
+In the perceptual frontend, **Illusory Continuation (restoration)** demos show that when a sound (e.g., a pure tone or speech) is briefly deleted and replaced by a louder noise burst, the brain "restores" the missing sound, perceiving it as continuous. The brain does this by predicting the global acoustic object from the remaining local snippets.
+
+**The isomorphism**: Learning representation targets dynamically → adapting local filters to fit the physics of the environment → inferring global context from partial observations.
 
 ---
 
