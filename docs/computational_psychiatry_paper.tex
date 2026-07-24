@@ -82,12 +82,15 @@ In a healthy cognitive architecture, the prior is moderately precise, reflecting
 \subsection{Schizophrenia and Auditory Hallucinations}
 Computational models of schizophrenia, particularly those focusing on hallucinations and delusions, posit an imbalance where internal generative priors become overly precise ($\pi_{prior} \gg \pi_{lik}$)~\cite{b3}. When this architecture encounters the optimized, high-$H_{cu}$ sound, the broad sensory likelihood offers no resistance to the overwhelming force of the prior. 
 
-To minimize free energy, the system completely dismisses the ambiguity and resolves the posterior almost entirely in the direction of the prior (Figure~\ref{fig:psychiatry}, middle). The individual confidently hears a specific source---perhaps a voice or a threat---that is not actually present in the acoustic signal. The hallucination is the brain's optimal response to resolving high-entropy noise under a broken precision-weighting mechanism.
-
 \subsection{Autism and Sensory Overload}
 Conversely, some predictive coding models of autism spectrum disorder (ASD) suggest a failure to attenuate sensory precision, leading to a state where sensory evidence is consistently over-weighted ($\pi_{lik} \gg \pi_{prior}$)~\cite{b4}. 
 
 When presented with ambiguous audio, this architecture treats the high-entropy input as if it were highly informative and precise (Figure~\ref{fig:psychiatry}, right). The failure to use the prior to smooth over or contextualize the noise results in an inability to filter out irrelevant acoustic details, directly modeling the phenomenon of auditory sensory overload.
+
+\subsection{Alarm Fatigue and the ``Cry Wolf'' Effect}
+Beyond inherent neurodevelopmental or psychiatric conditions, precision weighting is dynamically modulated by environmental statistical history. In safety-critical human-machine interfaces, operators exposed to high rates of non-actionable alerts experience \emph{alarm fatigue} (the ``cry wolf'' effect). 
+
+Mathematically, non-critical stochastic noise deforms the state probability density function, creating phenomenological boundary crossings or P-bifurcations. When an operator repeatedly encounters these false positives, the predictive coding architecture adapts by exponentially decaying the sensory precision weight ($\pi_{lik} \to 0$). When a true catastrophic failure occurs (a dynamical D-bifurcation), the posterior belief of danger fails to breach the action threshold because the prior belief of a false alarm dominates the inference. Alarm fatigue is thus formalised as an acquired, localized sensory desensitization induced by noise-driven P-bifurcations.
 
 \section{Conclusion}
 
