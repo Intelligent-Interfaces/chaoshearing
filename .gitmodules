@@ -1,0 +1,6 @@
+[submodule "neural-voices/Browser-Speech"]
+	path = neural-voices/Browser-Speech
+	url = https://github.com/jjmlovesgit/Browser-Speech.git
+[submodule "neural-voices/model"]
+	path = neural-voices/model
+	url = https://github.com/tiny-aya-simultaneous-translation/model.git
