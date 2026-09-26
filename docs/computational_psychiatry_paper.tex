@@ -92,6 +92,51 @@ Beyond inherent neurodevelopmental or psychiatric conditions, precision weightin
 
 Mathematically, non-critical stochastic noise deforms the state probability density function, creating phenomenological boundary crossings or P-bifurcations. When an operator repeatedly encounters these false positives, the predictive coding architecture adapts by exponentially decaying the sensory precision weight ($\pi_{lik} \to 0$). When a true catastrophic failure occurs (a dynamical D-bifurcation), the posterior belief of danger fails to breach the action threshold because the prior belief of a false alarm dominates the inference. Alarm fatigue is thus formalised as an acquired, localized sensory desensitization induced by noise-driven P-bifurcations.
 
+\section{Active Inference, Insecurity, and Non-Pharmacological Restructuring}
+
+The mathematical formalism developed for causal uncertainty and alarm fatigue extends naturally to the cognitive psychology of insecurity and its clinical remediation. While traditional psychiatric treatments often rely on pharmacological interventions targeting neuromodulatory receptors, the strongest empirical efficacy for treating insecurity, self-doubt, and shame lies within non-pharmacological, evidence-based psychotherapeutic paradigms: Cognitive Behavioral Therapy (CBT)~\cite{b5}, Compassion-Focused Therapy (CFT)~\cite{b6}, Acceptance and Commitment Therapy (ACT)~\cite{b7}, and behavioral exposure. Within active inference and predictive coding, these modalities can be rigorously formalized as precision-engineering operations on generative self-models.
+
+\subsection{Insecurity as a Maladaptive Prior and Epistemic Avoidance}
+We define an insecurity as a hyper-precise, maladaptive top-down prior over self-evaluative latent states:
+\begin{equation}
+    p(\theta) = \mathcal{N}\left(\mu_{\text{prior}}^{\text{insec}}, (\pi_{\text{prior}}^{\text{insec}})^{-1}\right), \quad \text{where } \pi_{\text{prior}}^{\text{insec}} \gg \pi_{\text{lik}}
+\end{equation}
+When an individual encounters an ambiguous social or acoustic stimulus exhibiting high causal uncertainty ($H_{cu}$), such as a subtle conversational silence or ambiguous feedback, the sensory likelihood $p(y|\theta)$ is broad ($\pi_{\text{lik}} \to 0$). Under Equation (2), the Bayesian posterior collapses into the negative prior:
+\begin{equation}
+    \mu_{\text{post}} \approx \mu_{\text{prior}}^{\text{insec}}
+\end{equation}
+The individual hallucinates social threat or inadequacy from statistical noise. 
+
+Crucially, in the active inference framework, agents select behavioral policies $\pi_a$ that minimize expected free energy $G(\pi_a) = \text{Risk} + \text{Ambiguity}$. In an insecure architecture, the expected risk of perceived rejection dominates. The agent responds by deploying \emph{epistemic avoidance} policies (e.g., social withdrawal, anticipatory compliance, concealment). By refusing to act openly, the agent starves the generative model of disconfirming sensory observations ($y_t$). Because the likelihood is never sampled, no sensory prediction error is generated, and the prior variance remains trapped in a deep, self-fulfilling attractor well (Figure~\ref{fig:insecurity}, panel c).
+
+\begin{figure*}[tbp]
+\centering
+\includegraphics[width=0.98\textwidth]{figures/unlearning_insecurity_active_inference.png}
+\caption{Active inference modeling of insecurity unlearning and non-pharmacological cognitive restructuring. (a) Perceptual inference under high causal uncertainty: an insecure agent with hyper-precise prior collapses neutral acoustic/social ambiguity into a negative percept, whereas cognitive restructuring restores balanced precision. (b) Multi-trial unlearning dynamics: epistemic avoidance (Policy A) traps the agent in maladaptive rumination; CBT behavioral experiments (Policy B) provide empirical disconfirming evidence through prediction errors; Compassion-Focused Therapy (Policy C) accelerates recalibration and stabilizes emotional variance. (c) Free-energy potential landscape $U(x)$: progressive deformation from a rigid double-well insecurity attractor into an adaptive, resilient potential basin.}
+\label{fig:insecurity}
+\end{figure*}
+
+\subsection{The Non-Pharmacological Toolkit as Precision Engineering}
+The non-pharmacological psychiatric interventions directly alter the parameters of this Bayesian inference loop:
+
+\begin{enumerate}
+    \item \textbf{CBT and Cognitive Reframing ($\pi_{\text{prior}} \downarrow$):} Cognitive restructuring (e.g., thought records) challenges automatic negative thoughts by demanding empirical evidence. In predictive coding, this is mathematically equivalent to deliberately attenuating the precision weight of the prior ($\pi_{\text{prior}} \to \pi_{\text{prior}}^{\text{restructured}}$). By reducing the prior's precision, ambiguous sensory evidence is no longer forcibly dragged into the negative attractor.
+    \item \textbf{Behavioral Experiments and Exposure ($\delta_t$-Driven Updating):} In behavioral experiments, the agent deliberately performs actions that test feared predictions (e.g., speaking in a meeting, asking a stranger for directions). This corresponds to active epistemic sampling. When the feared catastrophe fails to materialize, the true environmental outcome $y_t \sim \mathcal{N}(\mu_{\text{safe}}, \sigma_w^2)$ generates a massive sensory prediction error:
+    \begin{equation}
+        \delta_t = y_t - \mu_t
+    \end{equation}
+    Under Kalman filtering dynamics, the mean is updated via the Kalman gain $K_t$:
+    \begin{equation}
+        \mu_{t+1} = \mu_t + K_t \delta_t, \quad K_t = \frac{\pi_{\text{lik}}}{\pi_t + \pi_{\text{lik}}}
+    \end{equation}
+    As shown in Figure~\ref{fig:insecurity}(b), sequential behavioral experiments rapidly overwrite the negative prior, shifting $\mu_t$ toward empirical reality.
+    \item \textbf{Compassion-Focused Therapy (CFT) and Threat-Gain Modulation:} CFT establishes a neurophysiological ``soothing mode'' to counteract chronic self-criticism. Computationally, shame and self-criticism act as excessive gain on negative prediction errors, causing minor phenomenological fluctuations (P-bifurcations) to trigger acute alarm. Self-compassion practices inject internal affective regulation, dampening threat volatility and stabilizing the state trajectory on a safe, resilient manifold.
+    \item \textbf{ACT and Metacognitive Defusion:} Acceptance and Commitment Therapy trains the agent to observe thoughts as ephemeral computational events ($q(\theta)$) rather than deterministic ontological states ($x$). This decouples high causal uncertainty ($H_{cu}$) from reactive motor policies, enabling valued action in the presence of subjective discomfort.
+\end{enumerate}
+
+\subsection{Phase-Space Landscapes and Attractor Morphing}
+In dynamical systems terms, the transition from an entrenched insecurity to emotional resilience is a continuous deformation of the effective free-energy potential landscape $U(x) = -\ln p(x)$ (Figure~\ref{fig:insecurity}(c)). The initial pathological state exhibits a bifurcated landscape where the insecurity acts as a deep potential well, sustained by avoidance. Non-pharmacological restructuring systematically lowers the potential barrier between self-doubt and confidence, eventually collapsing the multistable landscape into a globally stable, unimodal adaptive basin capable of absorbing sensory shocks without perceptual collapse.
+
 \section{Conclusion}
 
 The optimization of causal uncertainty in sound objects is more than an interface design tool; it provides a rigorous mathematical environment for testing theories of computational psychiatry. By defining $H_{cu}$ as Shannon entropy and feeding these manipulated signals into Bayesian predictive coding frameworks, we demonstrate how structural properties of sound interact with cognitive vulnerabilities. This intersection of acoustic information theory and psychiatry offers profound insights into how the brain constructs its reality, and why that construction sometimes fails.
@@ -101,6 +146,9 @@ The optimization of causal uncertainty in sound objects is more than an interfac
 \bibitem{b2} K. Friston, ``The free-energy principle: a unified brain theory?'' \emph{Nature Reviews Neuroscience}, vol. 11, no. 2, pp. 127--138, 2010.
 \bibitem{b3} P. C. Fletcher and C. D. Frith, ``Perceiving is believing: a Bayesian approach to explaining the positive symptoms of schizophrenia,'' \emph{Nature Reviews Neuroscience}, vol. 10, no. 1, pp. 48--58, 2009.
 \bibitem{b4} E. Pellicano and D. Burr, ``When the world becomes `too real': a Bayesian explanation of autistic perception,'' \emph{Trends in Cognitive Sciences}, vol. 16, no. 10, pp. 504--510, 2012.
+\bibitem{b5} A. T. Beck, \emph{Cognitive Therapy of Depression}. New York: Guilford Press, 1979.
+\bibitem{b6} P. Gilbert, \emph{Compassion Focused Therapy: Distinctive Features}. London: Routledge, 2010.
+\bibitem{b7} S. C. Hayes, J. B. Luoma, F. W. Bond, A. Masuda, and J. Lillis, ``Acceptance and Commitment Therapy: Model, processes and outcomes,'' \emph{Behaviour Research and Therapy}, vol. 44, no. 1, pp. 1--25, 2006.
 \end{thebibliography}
 
 \end{document}
