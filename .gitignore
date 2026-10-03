@@ -21,3 +21,6 @@ venv/
 *.log
 *.out
 *.pdf
+
+# Ignore neural-voices folder
+neural-voices/
