@@ -9,7 +9,7 @@ _Hearing Performance, Chaotic Dynamics, and Computational Auditory Scene Analysi
 
 [← Home]({{ site.baseurl }}/)
 
-**Erick Oduniyi** — originally with [Myunghyun Oh](https://mathematics.ku.edu/myunghyun-oh)
+**Erick Oduniyi** — originally with [Myunghyun Oh](https://math.ku.edu/people/myunghyun-oh)
 
 ---
 

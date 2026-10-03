@@ -10,7 +10,7 @@ Chaos Hearing is a research project exploring how we hear, how sound behaves, an
 2. **Cognition of Hearing** — auditory scene analysis, musical imagery (hearing songs in your head), perfect pitch, and auditory phenomena in psychosis
 3. **Interfaces for Interaction** — intuitive audio control in multi-source environments, drawing from HCI and computational auditory scene analysis (CASA)
 
-The project grew out of a thesis on _Intuitive Audio Interaction and Control in Multi-Source Environments_ and a collaboration with [Myunghyun Oh](https://mathematics.ku.edu/myunghyun-oh) on the mathematics of hearing and chaotic dynamics.
+The project grew out of a thesis on _Intuitive Audio Interaction and Control in Multi-Source Environments_ and a collaboration with [Myunghyun Oh](https://math.ku.edu/people/myunghyun-oh) on the mathematics of hearing and chaotic dynamics.
 
 ## Repository Structure
 
