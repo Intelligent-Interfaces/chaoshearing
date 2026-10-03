@@ -157,14 +157,14 @@ This mechanism is perfectly isomorphic to the human auditory nerve. The auditory
 
 A critical challenge in human interaction is the ability to listen and plan speech simultaneously. Wernicke's area (reception) and Broca's area (production) must operate concurrently, connected by the arcuate fasciculus.
 
-The Cohere 3B Backbone within the TinyAya architecture models this through a \textit{Parallel Two-Stream Format}. The network ingests the discrete tokens from the user's audio stream (listening) while simultaneously maintaining an internal semantic state that drives a parallel model audio stream (speaking/planning).
+The Cohere 3B Backbone within the TinyAya architecture models this through a \textit{Parallel Two-Stream Format}. The network ingests the discrete tokens from the listener's audio stream (listening) while simultaneously maintaining an internal semantic state that drives a parallel model audio stream (speaking/planning).
 
-Simulations of this architecture demonstrate robust turn-taking behavior. As the user stream peaks, the model stream remains silent while an internal semantic planning vector accumulates energy, eventually triggering the output stream once the user pauses. This provides a compelling computational model for conversational cognitive dynamics.
+Simulations of this architecture demonstrate robust turn-taking behavior. As the operator stream peaks, the model stream remains silent while an internal semantic planning vector accumulates energy, eventually triggering the output stream once the operator pauses. This provides a compelling computational model for conversational cognitive dynamics.
 
 \begin{figure}[htbp]
 \centering
 \includegraphics[width=0.95\columnwidth]{parallel_streams.png}
-\caption{Parallel language streams simulation modeling the Wernicke-Broca cortex loop. The User Audio Stream (blue, listening) and Model Audio Stream (red, speaking) alternate, mediated by an Internal Semantic Planning state (purple, dashed) that accumulates during listening.}
+\caption{Parallel language streams simulation modeling the Wernicke-Broca cortex loop. The Listener Audio Stream (blue, listening) and Model Audio Stream (red, speaking) alternate, mediated by an Internal Semantic Planning state (purple, dashed) that accumulates during listening.}
 \label{fig:parallel_streams}
 \end{figure}
 

@@ -60,7 +60,7 @@ The connection to chaotic dynamics: when multiple nonlinear oscillators (cochlea
 ## Open Questions
 
 - How do chaotic dynamics in coupled cochlear oscillators contribute to source separation?
-- Can we build audio interfaces that expose the _structure_ of auditory scenes (not just waveforms or spectrograms) to users?
+- Can we build audio interfaces that expose the _structure_ of auditory scenes (not just waveforms or spectrograms) to operators?
 - What happens to these dynamics in hearing loss, tinnitus, or auditory processing disorders?
 
 ## Related Sources
